@@ -31,3 +31,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('profile/account', [AccountController::class, 'index'])
     ->name('account')
     ->middleware('auth');
+Route::get('{user}', [AccountController::class, 'show'])
+    ->name('account.show')
+    ->middleware('auth');

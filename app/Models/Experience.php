@@ -13,4 +13,8 @@ class Experience extends Model
     {
         $this->belongsTo(User::class);
     }
+    public function project()
+    {
+        $this->belongsTo(Project::class);
+    }
 }

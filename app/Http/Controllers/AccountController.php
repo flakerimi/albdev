@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -16,9 +17,14 @@ class AccountController extends Controller
      */
     public function index()
     {
-       $account_data = Auth::user()->with(['account','experience'])->get();
-        // dd($account_data->first()->experience()->get());
-         return Inertia::render('Account/Index', ['account_data'=>$account_data->first()->account()->get(),'experience_data'=>$account_data->first()->experience()->get()]);
+       $account_data = Auth::user()->first();
+         //dd($account_data->education()->get());
+         return Inertia::render('Account/Index',
+         ['account_data'=>$account_data->account()->get(),
+          'experience_data'=>$account_data->experience()->get(),
+          'education_data'=>$account_data->education()->get(),
+          'project_data'=>$account_data->project()->get(),
+        ]);
     }
 
     /**
@@ -48,9 +54,18 @@ class AccountController extends Controller
      * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function show(Account $account)
+    public function show($accountId)
     {
-        //
+        //dd($accountId);
+          $account_data = User::where('name',$accountId)->first();
+       //  dd($account_data);
+         return Inertia::render('Account/Index',
+         ['account_data'=>$account_data->account()->get(),
+          'experience_data'=>$account_data->experience()->get(),
+          'education_data'=>$account_data->education()->get(),
+          'project_data'=>$account_data->project()->get(),
+        ]);
+
     }
 
     /**

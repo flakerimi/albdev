@@ -55,6 +55,10 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
     protected $appends = [
         'profile_photo_url',
     ];
@@ -63,9 +67,17 @@ class User extends Authenticatable
     {
         return $this->hasOne(Account::class);
     }
-  public function experience()
+    public function experience()
     {
         return $this->hasMany(Experience::class);
+    }
+    public function education()
+    {
+        return $this->hasMany(Education::class);
+    }
+    public function project()
+    {
+        return $this->hasMany(Project::class);
     }
 
 }
