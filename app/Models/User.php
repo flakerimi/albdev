@@ -24,7 +24,9 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'user_name',
         'email',
         'password',
     ];
@@ -57,7 +59,7 @@ class User extends Authenticatable
      */
     public function getRouteKeyName()
     {
-        return 'name';
+        return 'user_name';
     }
     protected $appends = [
         'profile_photo_url',
