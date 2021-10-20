@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -35,7 +38,23 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $project = new Project;
+        $project->user_id = Auth::user()->id;
+        $project->title = $request->title;
+        $project->experience_id = Auth::user()->id;
+        $project->company = $request->company;
+        $project->start_month = $request->start_month;
+        $project->start_year = $request->start_year;
+        $project->end_month = $request->end_month;
+        $project->end_year = $request->end_year;
+        $project->description = $request->description;
+        $project->url = $request->url;
+        $project->active = $request->active;
+
+            if($project->save())
+                return Redirect::route('account')->with('success', 'Project created.');
+
+
     }
 
     /**

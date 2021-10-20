@@ -1078,6 +1078,9 @@ select {
 .visible {
 	visibility: visible;
 }
+.\!visible {
+	visibility: visible !important;
+}
 .fixed {
 	position: fixed;
 }
@@ -1190,6 +1193,9 @@ select {
 .-mt-px {
 	margin-top: -1px;
 }
+.mb-5 {
+	margin-bottom: 1.25rem;
+}
 .block {
 	display: block;
 }
@@ -1280,6 +1286,15 @@ select {
 .w-1\/2 {
 	width: 50%;
 }
+.w-1\/4 {
+	width: 25%;
+}
+.w-9 {
+	width: 2.25rem;
+}
+.w-2\/3 {
+	width: 66.666667%;
+}
 .min-w-0 {
 	min-width: 0px;
 }
@@ -1300,6 +1315,9 @@ select {
 }
 .flex-shrink-0 {
 	flex-shrink: 0;
+}
+.flex-grow {
+	flex-grow: 1;
 }
 .origin-top-left {
 	transform-origin: top left;
@@ -1348,6 +1366,12 @@ select {
 }
 .grid-cols-1 {
 	grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.flex-row {
+	flex-direction: row;
 }
 .flex-col {
 	flex-direction: column;
@@ -1780,6 +1804,14 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(209, 213, 219, var(--tw-text-opacity));
 }
+.text-gray-50 {
+	--tw-text-opacity: 1;
+	color: rgba(249, 250, 251, var(--tw-text-opacity));
+}
+.text-gray-100 {
+	--tw-text-opacity: 1;
+	color: rgba(243, 244, 246, var(--tw-text-opacity));
+}
 .underline {
 	text-decoration: underline;
 }
@@ -1999,7 +2031,7 @@ select {
 	outline-offset: 2px;
 }
 .focus\:outline-blue:focus {
-	outline: 1px dotted #FF0000;
+	outline: 0px dotted #006699;
 	outline-offset: 0;
 }
 .focus\:ring:focus {

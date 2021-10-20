@@ -17,8 +17,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-       $account_data = Auth::user()->first();
-         //dd($account_data->education()->get());
+       $account_data = Auth::user();
+        //  dd($account_data);
          return Inertia::render('Account/Index',
          ['account_data'=>$account_data->account()->get(),
           'experience_data'=>$account_data->experience()->get(),
@@ -45,7 +45,7 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -57,7 +57,7 @@ class AccountController extends Controller
     public function show($accountId)
     {
         //dd($accountId);
-          $account_data = User::where('name',$accountId)->first();
+          $account_data = User::where('user_name',$accountId)->first();
        //  dd($account_data);
          return Inertia::render('Account/Index',
          ['account_data'=>$account_data->account()->get(),

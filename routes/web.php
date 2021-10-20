@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ProjectController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,4 +34,7 @@ Route::get('profile/account', [AccountController::class, 'index'])
     ->middleware('auth');
 Route::get('{user}', [AccountController::class, 'show'])
     ->name('account.show')
+    ->middleware('auth');
+Route::post('project', [ProjectController::class, 'store'])
+    ->name('project.store')
     ->middleware('auth');

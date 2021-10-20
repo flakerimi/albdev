@@ -16,7 +16,7 @@ module.exports = {
                 sans: ["Nunito", ...defaultTheme.fontFamily.sans],
             },
             outline: {
-                blue: "1px dotted #FF0000",
+                blue: "0px dotted #006699",
             },
         },
     },
