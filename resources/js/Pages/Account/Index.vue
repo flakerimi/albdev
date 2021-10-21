@@ -3,15 +3,15 @@
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Account</h2>
     </template>
+    <template #footer>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Account</h2>
+    </template>
     <div class="max-w-7xl mx-auto mt-10">
       <div class="md:grid md:grid-cols-3 md:gap-6 mt-10 sm:mt-0">
         <div class="md:col-span-1 flex justify-between">
           <div class="px-4 sm:px-0">
             <h3 class="text-lg font-medium text-gray-900">Account Info</h3>
-            <p class="mt-1 text-sm text-gray-600">
-              Add additional security to your account using two factor
-              authentication.
-            </p>
+            <p class="mt-1 text-sm text-gray-600">Add additional security to your account using two factor authentication.</p>
           </div>
           <div class="px-4 sm:px-0"></div>
         </div>
@@ -38,6 +38,7 @@
       <hr class="mt-10 px-4 py-5 block" />
       <education :education_data="$page.props.education_data" />
       <hr class="mt-10 px-4 py-5 block" />
+      <add-project />
       <project :project_data="$page.props.project_data" />
     </div>
   </app-layout>
@@ -48,6 +49,7 @@ import AppLayout from "@/Layouts/AppLayout.vue";
 import Experience from "./Partials/Experience.vue";
 import Education from "./Partials/Education.vue";
 import Project from "./Partials/Project.vue";
+import AddProject from "./InLine/AddProject.vue";
 
 export default defineComponent({
   components: {
@@ -55,6 +57,7 @@ export default defineComponent({
     Education,
     Experience,
     Project,
+    AddProject,
   },
   props: {
     account_data: Object,

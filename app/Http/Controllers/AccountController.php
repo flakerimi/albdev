@@ -59,11 +59,11 @@ class AccountController extends Controller
         //dd($accountId);
           $account_data = User::where('user_name',$accountId)->first();
        //  dd($account_data);
-         return Inertia::render('Account/Index',
-         ['account_data'=>$account_data->account()->get(),
-          'experience_data'=>$account_data->experience()->get(),
-          'education_data'=>$account_data->education()->get(),
-          'project_data'=>$account_data->project()->get(),
+        return Inertia::render('Account/Public',[
+            'account_data'=>$account_data->account()->get(),
+            'experience_data'=>$account_data->experience()->get(),
+            'education_data'=>$account_data->education()->get(),
+            'project_data'=>$account_data->project()->get(),
         ]);
 
     }
