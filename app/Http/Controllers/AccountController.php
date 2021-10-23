@@ -17,13 +17,19 @@ class AccountController extends Controller
      */
     public function index()
     {
-       $account_data = Auth::user();
+       $account = Auth::user();
+
+          $account_data = $account->account()->orderBy('created_at','DESC')->get();
+          $experience_data = $account->experience()->orderBy('created_at','DESC')->get();
+          $education_data = $account->education()->orderBy('created_at','DESC')->get();
+          $project_data = $account->project()->orderBy('created_at','DESC')->get();
+
         //  dd($account_data);
          return Inertia::render('Account/Index',
-         ['account_data'=>$account_data->account()->get(),
-          'experience_data'=>$account_data->experience()->get(),
-          'education_data'=>$account_data->education()->get(),
-          'project_data'=>$account_data->project()->get(),
+         ['account_data'=>$account_data,
+          'experience_data'=>$experience_data,
+          'education_data'=>$education_data,
+          'project_data'=>$project_data,
         ]);
     }
 

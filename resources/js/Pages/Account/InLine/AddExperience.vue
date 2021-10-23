@@ -3,8 +3,8 @@
     <div id="project" class="md:grid md:grid-cols-3 md:gap-6 sm:mt-0">
       <div class="md:col-span-1 flex justify-between">
         <div class="px-4 sm:px-0">
-          <h3 class="text-lg font-medium text-gray-900">Projects</h3>
-          <p class="mt-1 text-sm text-gray-600">Add additional security to your account using two factor authentication.</p>
+          <h3 class="text-lg font-medium text-gray-900">Experience</h3>
+          <p class="mt-1 text-sm text-gray-600">Add additional Experience.</p>
         </div>
 
         <div class="px-4 sm:px-0"></div>
@@ -119,18 +119,8 @@
                       <jet-input-error :message="form.error" class="mt-2" />
                     </div>
                     <div class="mt-4 w-full px-2">
+                      <jet-label for="description" value="Description" />
                       <textarea ref="description" id="description" class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm" rows="6" placeholder="Type description here.." v-model="form.description"></textarea>
-                    </div>
-                    <div class="mt-4 w-1/2 px-2">
-                      <jet-input type="text" class="mt-1 block w-full" placeholder="Url" ref="url" v-model="form.url" />
-
-                      <jet-input-error :message="form.error" class="mt-2" />
-                    </div>
-                    <div class="mt-4 w-1/2 px-2">
-                      <label class="flex items-center">
-                        <jet-checkbox :value="active" v-model:checked="form.active" />
-                        <span class="ml-2 text-sm text-gray-600">Currently Working?</span>
-                      </label>
                     </div>
                   </div>
                 </div>
@@ -154,6 +144,7 @@ import JetButton from "@/Jetstream/Button.vue";
 import JetTextarea from "@/Jetstream/Textarea.vue";
 import JetCheckbox from "@/Jetstream/Checkbox.vue";
 import JetDialogModal from "@/Jetstream/DialogModal.vue";
+import JetLabel from "@/Jetstream/Label.vue";
 import JetInput from "@/Jetstream/InlineInput.vue";
 import JetInputError from "@/Jetstream/InputError.vue";
 import JetSecondaryButton from "@/Jetstream/SecondaryButton.vue";
@@ -169,6 +160,7 @@ export default defineComponent({
     JetCheckbox,
     JetDialogModal,
     JetInput,
+    JetLabel,
     JetInputError,
     JetSecondaryButton,
   },
@@ -178,15 +170,14 @@ export default defineComponent({
       visible: false,
       form: this.$inertia.form({
         _method: "POST",
-        title: this.title,
-        company: this.company,
-        start_month: this.start_month,
-        start_year: this.start_year,
-        end_month: this.end_month,
-        end_year: this.end_year,
-        description: this.description,
-        url: this.url,
-        active: this.active_project,
+        title: "",
+        company: "",
+        start_month: "",
+        start_year: "",
+        end_month: "",
+        end_year: "",
+        description: "",
+
         error: "",
       }),
     };
@@ -195,11 +186,10 @@ export default defineComponent({
   methods: {
     saveProject() {
       //console.log(this.form);
-      this.form.post(route("project.store"), {
-        errorBag: "projectStore",
+      this.form.post(route("experience.store"), {
+        errorBag: "experienceStore",
         onSuccess: (e) => {
           this.visible = false;
-
           console.log(e);
         },
       });

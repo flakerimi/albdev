@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Education;
+namespace App\Http\Controllers;
 
 use App\Models\Education;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class EducationController extends Controller
 {
@@ -35,9 +37,22 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $education = new Education;
+        $education->user_id = Auth::user()->id;
+        $education->school = $request->school;
+        $education->degree = $request->degree;
+        $education->start_month = $request->start_month;
+        $education->start_year = $request->start_year;
+        $education->end_month = $request->end_month;
+        $education->end_year = $request->end_year;
+        $education->description = $request->description;
 
+
+        if($education->save())
+            return Redirect::route('account')->with('success', 'Education created.');
+
+
+    }
     /**
      * Display the specified resource.
      *

@@ -1,6 +1,6 @@
-const mix = require('laravel-mix');
-const domain = 'albdev.test';
-const homedir = require('os').homedir();
+const mix = require("laravel-mix");
+const domain = "albdev.test";
+const homedir = require("os").homedir();
 
 /*
  |--------------------------------------------------------------------------
@@ -13,13 +13,14 @@ const homedir = require('os').homedir();
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').vue()
-    .postCss('resources/css/app.css', 'public/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
+mix.js("resources/js/app.js", "public/js")
+    .vue()
+    .postCss("resources/css/app.css", "public/css", [
+        require("postcss-import"),
+        require("tailwindcss"),
     ])
-    .webpackConfig(require('./webpack.config'));
-mix.browserSync({
+    .webpackConfig(require("./webpack.config"));
+/* mix.browserSync({
     proxy: "https://" + domain,
     host: domain,
     open: "external",
@@ -27,7 +28,7 @@ mix.browserSync({
         key: homedir + "/.config/valet/Certificates/" + domain + ".key",
         cert: homedir + "/.config/valet/Certificates/" + domain + ".crt",
     },
-}).sourceMaps();
+}); */
 if (mix.inProduction()) {
     mix.version();
 }

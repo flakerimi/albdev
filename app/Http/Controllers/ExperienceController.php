@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Experience;
-use Illuminate\Http\Request;
+ use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ExperienceController extends Controller
 {
@@ -35,7 +37,21 @@ class ExperienceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $education = new Experience;
+        $education->user_id = Auth::user()->id;
+        $education->title = $request->title;
+        $education->company = $request->company;
+        $education->start_month = $request->start_month;
+        $education->start_year = $request->start_year;
+        $education->end_month = $request->end_month;
+        $education->end_year = $request->end_year;
+        $education->description = $request->description;
+
+
+        if($education->save())
+            return Redirect::route('account')->with('success', 'Experience created.');
+
+
     }
 
     /**

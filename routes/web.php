@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EducationController;
+use App\Http\Controllers\ExperienceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,4 +39,15 @@ Route::get('{user}', [AccountController::class, 'show'])
     ->middleware('auth');
 Route::post('project', [ProjectController::class, 'store'])
     ->name('project.store')
+    ->middleware('auth');
+
+
+    /* Education */
+    Route::post('education', [EducationController::class, 'store'])
+    ->name('education.store')
+    ->middleware('auth');
+
+    /* Experience */
+    Route::post('experience', [ExperienceController::class, 'store'])
+    ->name('experience.store')
     ->middleware('auth');

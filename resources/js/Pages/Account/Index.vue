@@ -34,8 +34,12 @@
       </div>
 
       <hr class="mt-10 px-4 py-5 block" />
+      <add-experience />
+
       <experience :experience_data="$page.props.experience_data" />
       <hr class="mt-10 px-4 py-5 block" />
+      <add-education />
+
       <education :education_data="$page.props.education_data" />
       <hr class="mt-10 px-4 py-5 block" />
       <add-project />
@@ -50,6 +54,8 @@ import Experience from "./Partials/Experience.vue";
 import Education from "./Partials/Education.vue";
 import Project from "./Partials/Project.vue";
 import AddProject from "./InLine/AddProject.vue";
+import AddExperience from "./InLine/AddExperience.vue";
+import AddEducation from "./InLine/AddEducation.vue";
 
 export default defineComponent({
   components: {
@@ -58,6 +64,8 @@ export default defineComponent({
     Experience,
     Project,
     AddProject,
+    AddExperience,
+    AddEducation,
   },
   props: {
     account_data: Object,
