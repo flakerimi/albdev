@@ -5,13 +5,14 @@
         <div class="px-4 sm:px-0">
           <h3 class="text-lg font-medium text-gray-900">Experience</h3>
           <p class="mt-1 text-sm text-gray-600">Add additional security to your account using two factor authentication.</p>
+          Edit: {{ edit }}
         </div>
         <div class="px-4 sm:px-0"></div>
       </div>
       <div class="md:mt-0 md:col-span-2">
         <div class="sm:rounded-lg">
-          <div class="mb-6 px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg" v-for="experience in experience_data" :key="experience.id">
-            <a class="float-right" @click="toggleEdit(this, experience)">
+          <div class="mb-6 px-4 py-5 sm:p-6 bg-white toggled shadow sm:rounded-lg" v-for="experience in experience_data" :key="experience.id">
+            <a class="float-right" v-show="edit" @click="toggleEdit(this, experience)">
               <svg v-if="!experience.edit" xmlns="http://www.w3.org/2000/svg" width="24px" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="{2}" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
               </svg>
@@ -20,7 +21,7 @@
               </svg>
             </a>
 
-            <div v-show="!experience.edit">
+            <div :show="!experience.edit">
               <h3 class="text-lg float-left font-medium text-gray-900">{{ experience.title }} / {{ experience.company }}</h3>
               <div class="float-right"></div>
               <div class="mt-3 clear-both max-w-xl text-sm text-gray-600">
@@ -40,7 +41,7 @@
                 </p>
               </div>
             </div>
-            <edit-experience :showChild="showChild" v-show="experience.edit" :experience_data="experience" />
+            <edit-experience :showChild="showChild" :show="experience.edit" :experience_data="experience" />
           </div>
         </div>
       </div>
@@ -61,13 +62,14 @@ export default defineComponent({
   },
   props: {
     experience_data: Object,
+    edit: Boolean,
   },
 
   data() {
-    return { showChild: false };
+    return { showChild: false, edit_mode: false };
   },
   methods: {
-    toggleEdit: function (ev, experience) {
+    toggleEdit: function (_ev, experience) {
       if (experience.edit == true) {
         setTimeout(() => (experience.edit = false), 500);
         this.showChild = !this.showChild;
@@ -79,3 +81,8 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+.toggled {
+  transition: all;
+}
+</style>

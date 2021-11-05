@@ -36,7 +36,7 @@
       <hr class="mt-10 px-4 py-5 block" />
       <add-experience />
 
-      <experience :experience_data="$page.props.experience_data" />
+      <experience :edit="true" :experience_data="$page.props.experience_data" />
       <hr class="mt-10 px-4 py-5 block" />
       <add-education />
 
@@ -68,6 +68,7 @@ export default defineComponent({
     AddEducation,
   },
   props: {
+    edit: Boolean,
     account_data: Object,
     experience_data: Object,
     education_data: Object,
