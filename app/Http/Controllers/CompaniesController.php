@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class Companies extends Controller
+class CompaniesController extends Controller
 {
     /**
      * Display a listing of the resource.

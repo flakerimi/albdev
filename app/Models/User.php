@@ -69,6 +69,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Account::class);
     }
+   	public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
     public function experience()
     {
         return $this->hasMany(Experience::class)->orderBy('start_year');

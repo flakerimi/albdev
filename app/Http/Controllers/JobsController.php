@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
-class Jobs extends Controller
+class JobsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,17 @@ class Jobs extends Controller
      */
     public function index()
     {
-        //
+        // $jobs = User::where('user_name', $accountId)->first();
+
+    }
+    public function search()
+    {
+        $jobs = Job::all();
+        return Inertia::render('Job/Public', [
+            'jobs' => $jobs,
+
+        ]);
+
     }
 
     /**
