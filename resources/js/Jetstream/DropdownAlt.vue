@@ -30,10 +30,10 @@ import { defineComponent, onMounted, onUnmounted, ref } from "vue";
 export default defineComponent({
   props: {
     align: {
-      default: "right",
+      default: "left",
     },
     width: {
-      default: "48",
+      default: "64",
     },
     contentClasses: {
       default: () => ["py-1", "bg-white"],
@@ -61,6 +61,8 @@ export default defineComponent({
     widthClass() {
       return {
         48: "w-48",
+        64: "w-64",
+        auto: "w-auto",
       }[this.width.toString()];
     },
 

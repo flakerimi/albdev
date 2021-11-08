@@ -15,11 +15,12 @@
                 <Link :href="route('dashboard')">
                   <jet-application-logo class="block h-9 w-auto" />
                 </Link>
+                <language-selector></language-selector>
               </div>
 
               <!-- Navigation Links -->
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">Dashboard</jet-nav-link>
+                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">{{ __("Dashboard") }}</jet-nav-link>
               </div>
             </div>
 
@@ -175,7 +176,6 @@
                 </div>
               </div>
             </div>
-
             <div class="mt-3 space-y-1">
               <jet-responsive-nav-link :href="route('profile.show')" :active="route().current('profile.show')">Profile</jet-responsive-nav-link>
 
@@ -251,7 +251,7 @@ import JetDropdownLink from "@/Jetstream/DropdownLink.vue";
 import JetNavLink from "@/Jetstream/NavLink.vue";
 import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
-
+import LanguageSelector from "@/Shared/LanguageSelector.vue";
 export default defineComponent({
   props: {
     title: String,
@@ -266,6 +266,7 @@ export default defineComponent({
     JetDropdownLink,
     JetNavLink,
     JetResponsiveNavLink,
+    LanguageSelector,
     Link,
   },
 

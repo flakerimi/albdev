@@ -19,6 +19,11 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
  */
+Route::get('language/{language}', function ($language) {
+    Session()->put('locale', $language);
+
+    return redirect()->back();
+})->name('language');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [

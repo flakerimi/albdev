@@ -2,7 +2,7 @@
   <app-layout title="Profile">
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Jobs</h2>
-      <filters></filters>
+      <filters :filters="filters"></filters>
     </template>
     <template #footer>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">Footer</h2>
@@ -27,6 +27,7 @@ export default defineComponent({
   props: {
     edit: false,
     jobs: Object,
+    filters: Object,
   },
 });
 </script>

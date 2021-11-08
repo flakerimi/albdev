@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\JobFilter;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -20,10 +21,12 @@ class JobsController extends Controller
     }
     public function search()
     {
-        $jobs = Job::all();
+        $jobs = Job::with('company')->with('user')->get();
+        $filters = JobFilter::all()->groupBy('group');
+
         return Inertia::render('Job/Public', [
             'jobs' => $jobs,
-
+            'filters' => $filters,
         ]);
 
     }
